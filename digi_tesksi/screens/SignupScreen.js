@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, View, Text, Image, KeyboardAvoidingView, Keyboar
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames'
 
-const LoginScreen = ({ navigation }) => {
+const SignupScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.textHeader} >
-        welcome back to digitekisi
+        create your digitekisi account
       </Text>
       <View style={styles.form}>
         {/* <TextInput
@@ -54,12 +54,11 @@ const LoginScreen = ({ navigation }) => {
           style={styles.submitButton}
           onPress={handleSubmit}
         >
-          <Text style={styles.submitButtonText}>Login</Text>
+          <Text style={styles.submitButtonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.alt} >
-        <Text style={styles.altText1} >forgot password?</Text>
-        <Text style={styles.altText2} >create account</Text>
+        <Text style={styles.altText} >login instead</Text>
       </TouchableOpacity>
       {error && <Text style={styles.error}>{error}</Text>}
     </View>
@@ -158,20 +157,11 @@ const styles = StyleSheet.create({
   alt:{
     position:'absolute',
     bottom:'1.5rem',
-    // textAlign:'center',
-    display:'flex',
-    alignItems:'center',
-    flexDirection:'row',
-    justifyContent:'space-between',
+    textAlign:'center',
   },
-  altText1:{
-    color:'#fff',
-    marginRight:'4.2rem'
-  },
-  altText2:{
-    color:'#ffd600',
-    marginLeft:'4.2rem'
+  altText:{
+    color:'#fff'
   }
 });
 
-export default LoginScreen;
+export default SignupScreen;
