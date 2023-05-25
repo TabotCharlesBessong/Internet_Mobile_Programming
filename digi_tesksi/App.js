@@ -7,7 +7,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 // import Navigation from './navigation';
 // import AppNavigator from './navigation/AppNavigator';
 import { Text, useColorScheme,StyleSheet } from 'react-native';
-import { ForgotPassword, GetStartedScreen, LoginScreen, SignupScreen, ValidationScreen, YouWinScreen } from './screens';
+import { ForgotPassword, GetStartedScreen, LoginScreen, ResetPasswordScreen, SignupScreen, ValidationScreen, YouWinScreen } from './screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
@@ -24,7 +24,8 @@ const App = () => {
         {/* <SignupScreen/> */}
         {/* <LoginScreen/> */}
         {/* <ValidationScreen/> */}
-        <ForgotPassword/>
+        {/* <ForgotPassword/> */}
+        <ResetPasswordScreen/>
         <StatusBar />
       </SafeAreaProvider>
     );
