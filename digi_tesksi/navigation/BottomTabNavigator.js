@@ -1,17 +1,22 @@
-// Learn more about createBottomTabNavigator:
-// https://reactnavigation.org/docs/bottom-tab-navigator
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
-import { useColorScheme } from "react-native";
+// // Learn more about createBottomTabNavigator:
+// // https://reactnavigation.org/docs/bottom-tab-navigator
+// import Ionicons from "@expo/vector-icons/Ionicons";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { createStackNavigator } from "@react-navigation/stack";
+// import { useColorScheme } from "react-native";
 
 import Colors from "../constants/Colors";
 import {LoginScreen,TabOneScreen,TabTwoScreen,GetStartedScreen} from '../screens'
 
-const BottomTab = createBottomTabNavigator();
+// // You can explore the built-in icon families and icons on the web at:
+// // https://icons.expo.fyi/
+// function TabBarIcon(props) {
+//   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+// }
 
-export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
+// // Each tab has its own navigation stack, you can read more about this pattern here:
+// // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
+// const TabOneStack = createStackNavigator();
 
   return (
     <BottomTab.Navigator
@@ -39,7 +44,7 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Start"
+        name="Login"
         component={LoginNavigator}
         options={{
           headerShown: false,
@@ -52,52 +57,55 @@ export default function BottomTabNavigator() {
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
+// const LoginStack = createStackNavigator()
 
-// Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator();
+// const LoginNavigator = () => {
+//   return (
+//     <TabTwoStack.Navigator>
+//       <TabTwoStack.Screen
+//         name="LoginScreen"
+//         component={LoginScreen}
+//         options={{ headerTitle: "Login Into your account" }}
+//       />
+//     </TabTwoStack.Navigator>
+//   );
+// }
 
-const TabOneNavigator = ()=> {
-  return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: "Tab One Title" }}
-      />
-    </TabOneStack.Navigator>
-  );
-}
+// const TabTwoStack = createStackNavigator();
 
-const LoginStack = createStackNavigator()
+// const TabTwoNavigator = () => {
+//   return (
+//     <TabTwoStack.Navigator>
+//       <TabTwoStack.Screen
+//         name="TabTwoScreen"
+//         component={TabTwoScreen}
+//         options={{ headerTitle: "Tab Two Title" }}
+//       />
+//     </TabTwoStack.Navigator>
+//   );
+// }
 
 const LoginNavigator = () => {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="GetStartedScreen"
-        component={GetStartedScreen}
-        options={{ headerTitle: "DIGITEKISI" }}
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ headerTitle: "Login Into your account" }}
       />
     </TabTwoStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-const TabTwoNavigator = () => {
+const BottomTabNavigator = () => {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: "Tab Two Title" }}
-      />
-    </TabTwoStack.Navigator>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={SignupScreen} />
+      <Tab.Screen name="Login" component={LoginScreen} />
+    </Tab.Navigator>
   );
-}
+};
+
+export default BottomTabNavigator;
