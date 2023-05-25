@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { useColorScheme } from "react-native";
 
 import Colors from "../constants/Colors";
-import {LoginScreen,TabOneScreen,TabTwoScreen} from '../screens'
+import {LoginScreen,TabOneScreen,TabTwoScreen,GetStartedScreen} from '../screens'
 
 const BottomTab = createBottomTabNavigator();
 
@@ -39,7 +39,7 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Login"
+        name="Start"
         component={LoginNavigator}
         options={{
           headerShown: false,
@@ -80,9 +80,9 @@ const LoginNavigator = () => {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="LoginScreen"
-        component={LoginScreen}
-        options={{ headerTitle: "Login Into your account" }}
+        name="GetStartedScreen"
+        component={GetStartedScreen}
+        options={{ headerTitle: "DIGITEKISI" }}
       />
     </TabTwoStack.Navigator>
   );

@@ -2,16 +2,20 @@ import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from "expo-linear-gradient";
 import React from 'react';
 import "react-native-gesture-handler";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
-// import Navigation from './navigation';
+import Navigation from './navigation';
 // import AppNavigator from './navigation/AppNavigator';
-import { Text, useColorScheme,StyleSheet } from 'react-native';
+import { View,Text, useColorScheme,StyleSheet } from 'react-native';
 import { GetStartedScreen, LoginScreen, SignupScreen, ValidationScreen } from './screens';
 
 const App = () => {
   const colorScheme = useColorScheme()
+  let AppName ='DIGITEKISI'
   return (
+    
+
       <SafeAreaProvider style={styles.container} >
        <LinearGradient
            colors={['#00BFA5', '#333333']}
@@ -22,8 +26,8 @@ const App = () => {
         >
         {/* <Navigation colorScheme={colorScheme} /> */}
         {/* <AppNavigator/> */}
-        <Text style={{font: '200px', color: 'white'}}>DigiTekisi Our Taxi App</Text>
-        {/* <GetStartedScreen/> */}
+        <Text style={{font: '200px', color: 'white'}}>{AppName}</Text>
+        <GetStartedScreen/>
         {/* <SignupScreen/> */}
         {/* <LoginScreen/> */}
         {/* <ValidationScreen/> */}
