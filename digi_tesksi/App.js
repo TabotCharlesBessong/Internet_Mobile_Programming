@@ -13,7 +13,7 @@ const App = () => {
       <SafeAreaProvider>
         <Navigation colorScheme={colorScheme} />
         {/* <AppNavigator/> */}
-        <Text>Hello world</Text>
+        <Text >Hello Guys world</Text>
         <StatusBar />
       </SafeAreaProvider>
     );
