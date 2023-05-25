@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import { LinearGradient } from "expo-linear-gradient";
 import React from 'react';
 import "react-native-gesture-handler";
 
@@ -12,14 +13,22 @@ const App = () => {
   const colorScheme = useColorScheme()
   return (
       <SafeAreaProvider style={styles.container} >
+       <LinearGradient
+           colors={['#00BFA5', '#333333']}
+                    style={{ flex: 1 }}
+                    //  Linear Gradient 
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 1 }}
+        >
         {/* <Navigation colorScheme={colorScheme} /> */}
         {/* <AppNavigator/> */}
-        <Text>digitekisi</Text>
+        <Text style={{font: '200px', color: 'white'}}>DigiTekisi Our Taxi App</Text>
         {/* <GetStartedScreen/> */}
         {/* <SignupScreen/> */}
         {/* <LoginScreen/> */}
-        <ValidationScreen/>
+        {/* <ValidationScreen/> */}
         <StatusBar />
+        </LinearGradient>
       </SafeAreaProvider>
     );
 }
@@ -28,6 +37,8 @@ export default App
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor:'green'
+    // filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+    background: "green",
+    // background: 'linear-gradient(180deg, #00BFA5 0%, #333333 100%)',
   }
 })
