@@ -1,9 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, TextInput, View, Text, Image, KeyboardAvoidingView, Keyboard, TouchableOpacity, ScrollView, } from 'react-native';
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames'
 
-const LoginScreen = ({ navigation }) => {
+const ValidationScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,30 +26,14 @@ const LoginScreen = ({ navigation }) => {
         welcome back to digitekisi
       </Text>
       <View style={styles.form}>
-        {/* <TextInput
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={styles.input}
-        /> */}
         <View style={styles.input_field} >
           <TextInput
-            placeholder="Email"
+            placeholder="verification code*"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={styles.input}
           />
-          <Icon style={[tw`p-2 bg-transparent rounded-full w-10`]} color="black" name="mail" type="entypo" />
-        </View>
-        <View style={styles.input_field} >
-          <TextInput
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={styles.input}
-            secureTextEntry={true}
-          />
-          <Icon style={tw`p-2 bg-transparent rounded-full w-10`} color="black" name="eye" type="antdesign" />
+          <Icon style={[tw`p-2 bg-transparent rounded-full w-10`]} color="black" name="stepforward" type="antdesign" />
         </View>
         <TouchableOpacity
           style={styles.submitButton}
@@ -58,8 +43,8 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.alt} >
-        <Text style={styles.altText1} >forgot password?</Text>
-        <Text style={styles.altText2} >create account</Text>
+        <Text style={styles.altText1} >go back to login</Text>
+        <Text style={styles.altText2} >create new account</Text>
       </TouchableOpacity>
       {error && <Text style={styles.error}>{error}</Text>}
     </View>
@@ -174,4 +159,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginScreen;
+export default ValidationScreen;
