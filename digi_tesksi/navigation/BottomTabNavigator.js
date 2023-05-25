@@ -5,52 +5,8 @@
 // import { createStackNavigator } from "@react-navigation/stack";
 // import { useColorScheme } from "react-native";
 
-// import Colors from "../constants/Colors";
-// import {LoginScreen,TabOneScreen,TabTwoScreen} from '../screens'
-
-// const BottomTab = createBottomTabNavigator();
-
-// export default function BottomTabNavigator() {
-//   const colorScheme = useColorScheme();
-
-//   return (
-//     <BottomTab.Navigator
-//       initialRouteName="TabOne"
-//       screenOptions={{ tabBarActiveTintColor: Colors[colorScheme].tint }}
-//     >
-//       <BottomTab.Screen
-//         name="TabOne"
-//         component={TabOneNavigator}
-//         options={{
-//           headerShown: false,
-//           tabBarIcon: ({ color }) => (
-//             <TabBarIcon name="ios-code" color={color} />
-//           ),
-//         }}
-//       />
-//       <BottomTab.Screen
-//         name="TabTwo"
-//         component={TabTwoNavigator}
-//         options={{
-//           headerShown: false,
-//           tabBarIcon: ({ color }) => (
-//             <TabBarIcon name="ios-code" color={color} />
-//           ),
-//         }}
-//       />
-//       <BottomTab.Screen
-//         name="Login"
-//         component={LoginNavigator}
-//         options={{
-//           headerShown: false,
-//           tabBarIcon: ({ color }) => (
-//             <TabBarIcon name="ios-code" color={color} />
-//           ),
-//         }}
-//       />
-//     </BottomTab.Navigator>
-//   );
-// }
+import Colors from "../constants/Colors";
+import {LoginScreen,TabOneScreen,TabTwoScreen,GetStartedScreen} from '../screens'
 
 // // You can explore the built-in icon families and icons on the web at:
 // // https://icons.expo.fyi/
@@ -62,17 +18,44 @@
 // // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 // const TabOneStack = createStackNavigator();
 
-// const TabOneNavigator = ()=> {
-//   return (
-//     <TabOneStack.Navigator>
-//       <TabOneStack.Screen
-//         name="TabOneScreen"
-//         component={TabOneScreen}
-//         options={{ headerTitle: "Tab One Title" }}
-//       />
-//     </TabOneStack.Navigator>
-//   );
-// }
+  return (
+    <BottomTab.Navigator
+      initialRouteName="TabOne"
+      screenOptions={{ tabBarActiveTintColor: Colors[colorScheme].tint }}
+    >
+      <BottomTab.Screen
+        name="TabOne"
+        component={TabOneNavigator}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="TabTwo"
+        component={TabTwoNavigator}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Login"
+        component={LoginNavigator}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+    </BottomTab.Navigator>
+  );
+}
 
 // const LoginStack = createStackNavigator()
 
@@ -102,9 +85,17 @@
 //   );
 // }
 
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {LoginScreen,SignupScreen} from '../screens'
+const LoginNavigator = () => {
+  return (
+    <TabTwoStack.Navigator>
+      <TabTwoStack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ headerTitle: "Login Into your account" }}
+      />
+    </TabTwoStack.Navigator>
+  );
+}
 
 const Tab = createBottomTabNavigator();
 

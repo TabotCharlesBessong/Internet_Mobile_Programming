@@ -1,51 +1,79 @@
 
-import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Svg } from "react-native-svg";
+import { SvgUri } from "react-native-svg";
 import tw from "tailwind-react-native-classnames";
 
 const GetStartedScreen = () => {
   return (
-    <SafeAreaView style={styles.container} >
-      <View style={{
-        padding:'2rem'
-      }} >
+     <LinearGradient
+           colors={['#00BFA5', '#333333']}
+                    style={{ flex: 1 }}
+                    //  Linear Gradient 
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 1 }}
+        >
+    <SafeAreaView style={styles.container}>
+    <View style={styles.container} >
+   
+     
+    
         <Text style={styles.header} >
-          taxi of your dreams
+          Taxi of your Dreams
         </Text>
-      </View>
-      <View>
-        <Image style={{
-          width:100,height:100,resizeMode:'contain'
-        }} source={{
-          uri:'https://links.papareact.com/gzs'
-        }} />
+        <Text style={styles.title} >
+          Your taxi ride could not be more pleasurable than DigiTekisi
+        </Text>
+      
+      
+        <Image source={require('../assets/lambo.png')} />
+        {/* <SvgUri
+    width="100"
+    height="200"
+     source={require('../assets/lambo.svg')}
+  /> */}
+        
 
-      </View>
+     
 
-      <View>
+      
         <Text>get started</Text>
-      </View>
+     
+    </View>
     </SafeAreaView>
+</LinearGradient>
   );
 };
-
 export default GetStartedScreen;
 
 const styles = StyleSheet.create({
-  container:{
-    display:'flex',
-    flexDirection:'column',
-    justifyContent:'space-evenly',
-    alignItems:'center',
-    backgroundColor:'#00BFA5',
-    flex:1
+  container: {
+    flex: 1,
+    alignItems: "center",
+    // justifyContent: "center",
   },
-  header:{
-    fontSize:'3rem',
-    fontWeight:'bold',
-    color:'#fff',
-    textAlign:'center',
-    textTransform:'capitalize',
-  }
+  header: {
+    position: "relative",
+    fontSize: 50,
+    color: "white",
+    fontWeight: "bold",
+  },
+  title: {
+    position: "relative",
+    marginTop:20,
+    fontSize: 20,
+    color: "white",
+    fontWeight: "normal",
+  },
+  separator: {
+    // marginVertical: 30,
+    // height: 100,
+    // width: "80%",
+    flex: 1,
+    alignItems: "center",
+
+  },
 });
+
