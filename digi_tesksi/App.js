@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import { LinearGradient } from "expo-linear-gradient";
 import React from 'react';
 import "react-native-gesture-handler";
 
@@ -16,14 +17,14 @@ const App = () => {
   const Stack = createStackNavigator()
   return (
       <SafeAreaProvider style={styles.container} >
-        {/* <NavigationContainer>
-          <Stack.Navigator initialRouteName='Signup' screenOptions={{headerShown:false}}>
-            <Stack.Screen name="Signup" component={SignupScreen} />
-           <Stack.Screen name="Login" component={LoginScreen} />
-           <Stack.Screen name="Signup" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer> */}
-        <YouWinScreen/>
+        {/* <Navigation colorScheme={colorScheme} /> */}
+        {/* <AppNavigator/> */}
+        <Text>digitekisi</Text>
+        {/* <GetStartedScreen/> */}
+        {/* <SignupScreen/> */}
+        {/* <LoginScreen/> */}
+        <ValidationScreen/>
+        <StatusBar />
       </SafeAreaProvider>
     );
 }
@@ -32,7 +33,9 @@ export default App
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor:'green'
+    // filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+    background: "green",
+    // background: 'linear-gradient(180deg, #00BFA5 0%, #333333 100%)',
   }
 })
 
