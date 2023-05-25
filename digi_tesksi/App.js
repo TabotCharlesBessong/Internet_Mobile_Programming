@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { LinearGradient } from "expo-linear-gradient";
+// import { LinearGradient } from "expo-linear-gradient";
 import React from 'react';
 import "react-native-gesture-handler";
 
@@ -7,7 +7,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 // import Navigation from './navigation';
 // import AppNavigator from './navigation/AppNavigator';
 import { Text, useColorScheme,StyleSheet } from 'react-native';
-import { GetStartedScreen, LoginScreen, SignupScreen, ValidationScreen, YouWinScreen } from './screens';
+import { ForgotPassword, GetStartedScreen, LoginScreen, SignupScreen, ValidationScreen, YouWinScreen } from './screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
@@ -23,7 +23,8 @@ const App = () => {
         {/* <GetStartedScreen/> */}
         {/* <SignupScreen/> */}
         {/* <LoginScreen/> */}
-        <ValidationScreen/>
+        {/* <ValidationScreen/> */}
+        <ForgotPassword/>
         <StatusBar />
       </SafeAreaProvider>
     );
