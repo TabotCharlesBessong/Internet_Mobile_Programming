@@ -27,7 +27,7 @@ const App = () => {
         <GetStartedScreen/>
         {/* <SignupScreen/> */}
         {/* <LoginScreen/> */}
-        <ValidationScreen/>
+        {/* <ValidationScreen/> */}
         <StatusBar />
       </SafeAreaProvider>
     );
