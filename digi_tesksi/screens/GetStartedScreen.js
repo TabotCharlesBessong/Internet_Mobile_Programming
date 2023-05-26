@@ -1,20 +1,21 @@
 
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { LinearGradient } from "expo-linear-gradient";
+// import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { SvgUri } from "react-native-svg";
 import tw from "tailwind-react-native-classnames";
 
 const GetStartedScreen = () => {
   return (
-     <LinearGradient
-           colors={['#00BFA5', '#333333']}
-                    style={{ flex: 1 }}
-                    //  Linear Gradient 
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 0, y: 1 }}
-        >
+//      <LinearGradient
+//            colors={['#00BFA5', '#333333']}
+//                     style={{ flex: 1 }}
+//                     //  Linear Gradient 
+//                     start={{ x: 0, y: 0 }}
+//                     end={{ x: 0, y: 1 }}
+//         >
+// </LinearGradient>
     <SafeAreaView style={styles.container}>
     <View style={styles.container} >
    
@@ -43,7 +44,6 @@ const GetStartedScreen = () => {
      
     </View>
     </SafeAreaView>
-</LinearGradient>
   );
 };
 export default GetStartedScreen;

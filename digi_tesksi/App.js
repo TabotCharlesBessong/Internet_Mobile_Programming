@@ -7,13 +7,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Navigation from './navigation';
 // import AppNavigator from './navigation/AppNavigator';
-<<<<<<< HEAD
-import { Text, useColorScheme,StyleSheet } from 'react-native';
-import { ForgotPassword, GetStartedScreen, LoginScreen, ResetPasswordScreen, SignupScreen, ValidationScreen, YouWinScreen } from './screens';
-=======
-import { View,Text, useColorScheme,StyleSheet } from 'react-native';
+import { ForgotPassword, ResetPasswordScreen } from './screens';
+import { View, useColorScheme,StyleSheet,Text } from 'react-native';
 import { GetStartedScreen, LoginScreen, SignupScreen, ValidationScreen, YouWinScreen } from './screens';
->>>>>>> d122648f4fafc3241447b809e244b0280f190b0c
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
@@ -29,15 +25,12 @@ const App = () => {
         {/* <Navigation colorScheme={colorScheme} /> */}
         {/* <AppNavigator/> */}
         <Text style={{font: '200px', color: 'white'}}>{AppName}</Text>
-        <GetStartedScreen/>
+        {/* <GetStartedScreen/> */}
         {/* <SignupScreen/> */}
         {/* <LoginScreen/> */}
         {/* <ValidationScreen/> */}
-<<<<<<< HEAD
         {/* <ForgotPassword/> */}
         <ResetPasswordScreen/>
-=======
->>>>>>> d122648f4fafc3241447b809e244b0280f190b0c
         <StatusBar />
       </SafeAreaProvider>
     );
