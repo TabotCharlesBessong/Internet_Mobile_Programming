@@ -1,9 +1,9 @@
 
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, Button } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { SvgUri } from "react-native-svg";
+// import { SvgUri } from "react-native-svg";
 import tw from "tailwind-react-native-classnames";
 
 const GetStartedScreen = () => {
@@ -17,29 +17,23 @@ const GetStartedScreen = () => {
         >
     <SafeAreaView style={styles.container}>
     <View style={styles.container} >
-   
-     
     
         <Text style={styles.header} >
-          Taxi of your Dreams
+          Taxi of your Dreamsgggs
         </Text>
         <Text style={styles.title} >
           Your taxi ride could not be more pleasurable than DigiTekisi
         </Text>
-      
-      
-        <Image source={require('../assets/lambo.png')} />
-        {/* <SvgUri
-    width="100"
-    height="200"
-     source={require('../assets/lambo.svg')}
-  /> */}
-        
 
-     
+        <Image source={require('../assets/lambo.png')} />     
 
       
-        <Text>get started</Text>
+        <Button
+  onPress={onPressLearnMore}
+  title="Learn More"
+  color="#841584"
+  accessibilityLabel="Learn more about this purple button"
+/>
      
     </View>
     </SafeAreaView>

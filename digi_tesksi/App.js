@@ -17,9 +17,8 @@ const App = () => {
   const colorScheme = useColorScheme()
   let AppName ='DIGITEKISI'
   const Stack = createStackNavigator()
-  return (
-    
 
+  return (
       <SafeAreaProvider style={styles.container} >
         {/* <Navigation colorScheme={colorScheme} /> */}
         {/* <AppNavigator/> */}
@@ -37,9 +36,7 @@ export default App
 
 const styles = StyleSheet.create({
   container:{
-    // filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-    background: "green",
-    // background: 'linear-gradient(180deg, #00BFA5 0%, #333333 100%)',
+   
   }
 })
 
