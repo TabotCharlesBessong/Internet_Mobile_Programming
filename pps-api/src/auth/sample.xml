@@ -1,0 +1,18 @@
+<xs.schema xmlns:xs="httpsomething">
+    <xs:element name="book">
+        <xs:complexType>
+            <xs:sequence> 
+                <xs:element name="title" type="xs:string" />
+                <xs:element name="author" type="xs:string" />
+                <xs:element name="price" type="xs:decimal" />
+            </xs:sequence>
+            <xs:attribute name="year" type="xs:gYear" /> 
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+<book>
+    <title>The Stand</title>
+    <author>Stephen King</author>
+    <price>5000</price>
+</book>
