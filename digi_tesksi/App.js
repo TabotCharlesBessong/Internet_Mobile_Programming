@@ -5,14 +5,14 @@ import "react-native-gesture-handler";
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import Navigation from './navigation';
+// import Navigation from './navigation';
 // import AppNavigator from './navigation/AppNavigator';
 import { ForgotPassword, ResetPasswordScreen } from './screens';
 import { View, useColorScheme,StyleSheet,Text } from 'react-native';
 import { GetStartedScreen, LoginScreen, SignupScreen, ValidationScreen, YouWinScreen } from './screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import BottomTabNavigator from './navigation/BottomTabNavigator';
+// import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 const App = () => {
   const colorScheme = useColorScheme()
@@ -29,7 +29,7 @@ const App = () => {
         {/* <LoginScreen/> */}
         {/* <ValidationScreen/> */}
         {/* <ForgotPassword/> */}
-        <ResetPasswordScreen/>
+        {/* <ResetPasswordScreen/> */}
         <StatusBar />
       </SafeAreaProvider>
     );
