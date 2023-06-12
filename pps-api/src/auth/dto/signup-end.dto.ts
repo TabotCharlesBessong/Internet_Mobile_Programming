@@ -1,11 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsString, Length } from 'class-validator';
 
 export class SignupEndDto {
+  @IsNotEmpty()
+  @Length(6, 6)
+  @IsString()
   @ApiProperty({
-    type: Number,
+    type: String,
     required: true,
-    minimum: 6,
-    maximum: 6,
+    example: '134534',
   })
-  verificationCode: number;
+  verificationCode: string;
 }
+
+export default SignupEndDto;

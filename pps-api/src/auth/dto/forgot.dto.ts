@@ -1,10 +1,14 @@
-import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { SignupStartDto } from './signup-start.dto';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 
-export class ForgotPasswordDto extends PartialType(SignupStartDto) {
+export class ForgotPasswordDto {
+  @IsEmail()
+  @IsNotEmpty()
   @ApiProperty({
     required: true,
     type: String,
   })
   email: string;
 }
+
+export default ForgotPasswordDto;
