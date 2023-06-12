@@ -12,7 +12,7 @@ import { View, useColorScheme,StyleSheet,Text } from 'react-native';
 import { GetStartedScreen, LoginScreen, SignupScreen, ValidationScreen, YouWinScreen } from './screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import BottomTabNavigator from './navigation/BottomTabNavigator';
+// import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 const App = () => {
   const colorScheme = useColorScheme()
