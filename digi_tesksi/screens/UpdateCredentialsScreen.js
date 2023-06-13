@@ -2,6 +2,7 @@
 import { StyleSheet, Text, View,Image,TextInput,TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { Icon } from 'react-native-elements';
+import tw from "tailwind-react-native-classnames";
 
 const UpdateCredentialsScreen = () => {
   const [username, setUsername] = useState('');
@@ -36,20 +37,24 @@ const UpdateCredentialsScreen = () => {
   return (
     <View>
       <View>
-        <Image source={require('../assets/lambo.png')} />
-        <Text>neruszaumuy@gmail.com</Text>
+        <Image style={{
+          width:100,height:100,resizeMode:'contain'
+        }} source={{
+          uri:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Fbeautiful-lady&psig=AOvVaw19Y1psdg7bg4haC811cTqQ&ust=1686661975137000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNiW-NTnvf8CFQAAAAAdAAAAABAE'
+        }} />
+        <Text style={{}} >neruszaumuy@gmail.com</Text>
       </View>
 
-      <View>
-        <View>
+      <View style={styles.cardsContainer} >
+        <View style={styles.card} >
           <Text>No of rides</Text>
           <Text>57</Text>
         </View>
-        <View>
+        <View style={styles.card} >
           <Text>account balance</Text>
           <Text>XAF 2300</Text>
         </View>
-        <View>
+        <View style={styles.card} >
           <Text>Spare tickets</Text>
           <Text>3</Text>
         </View>
@@ -79,7 +84,7 @@ const UpdateCredentialsScreen = () => {
         <View style={styles.textContainer}>
           <Text style={styles.label}>Select an option</Text>
           <TextInput
-            placeholder="Select an option"
+            placeholder="Select your cluster"
             value={selectedOption}
             onChange={(text) => setSelectedOption(text)}
             style={styles.input}
@@ -104,9 +109,9 @@ const UpdateCredentialsScreen = () => {
         </View>
         <TouchableOpacity
           style={styles.submitButton}
-          onPress={handleSubmit}
+          onPress={{}}
         >
-          <Text style={styles.submitButtonText}>Login</Text>
+          <Text style={styles.submitButtonText}>Update Cridentials</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -130,12 +135,12 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     alignSelf: 'center',
-    marginTop: 20,
+    marginTop: '20px',
   },
   form: {
     width: 300,
     margin: 20,
-    borderRadius: 10,
+    borderRadius: '10px',
     backgroundColor: 'transparent',
     height:'40%',
     display:'flex',
@@ -145,7 +150,7 @@ const styles = StyleSheet.create({
     padding:'1rem'
   },
   input_field:{
-    padding:'4px 8px',
+    padding:8,
     position:'relative',
     margin:'1rem auto',
     backgroundColor:'transparent',
@@ -155,7 +160,9 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     border:'2px solid black',
     borderRadius:'6px',
-    width:'100%'
+    width:'100%',
+    marginBottom:'1rem',
+    // width:'90%'
   },
   input: {
     height: 40,
@@ -164,7 +171,8 @@ const styles = StyleSheet.create({
     padding: 10,
     width:'100%',
     outline:'none',
-    border:'none'
+    border:'none',
+    flex:1
   },
   input_icon:{
     position:'absolute',
@@ -172,22 +180,22 @@ const styles = StyleSheet.create({
     right:'2px'
   },
   submitButton: {
-    width: 100,
-    height: 40,
+    // width: 100,
+    // height: 40,
     backgroundColor: '#000',
     color: '#fff',
-    borderRadius: 10,
+    borderRadius: '10px',
     alignSelf: 'center',
-    marginTop: 20,
-    // padding:'0.4rem 1rem',
-    paddingBottom:5,
-    paddingTop:5,
-    paddingLeft:16,
-    paddingLeft:16,
-    backgroundColor:'#ffd600'
+    marginTop: '20px',
+    padding:'1rem',
+    // paddingBottom:5,
+    // paddingTop:5,
+    // paddingLeft:16,
+    // paddingLeft:16,
+    backgroundColor:'#ffd600',
   },
   submitButtonText: {
-    fontSize: 18,
+    fontSize: '18px',
     fontWeight: 'bold',
     color:'#fff'
   },
@@ -195,7 +203,7 @@ const styles = StyleSheet.create({
     color: '#f00',
     fontSize: 16,
     textAlign: 'center',
-    marginTop: 10,
+    marginTop: '10px',
   },
   textHeader:{
     fontSize:'3.2rem',
@@ -205,26 +213,34 @@ const styles = StyleSheet.create({
     textAlign:'center'
   },
   card:{
-    width:200,
-    height:200,
-    borderRadius:8
+    width:120,
+    height:80,
+    borderRadius:'8px',
+    backgroundColor:'green',
+    color:'gray',
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'space-around',
+    textTransform:'capitalize',
+    cursor:'pointer'
   },
-  cardContainer:{
+  cardsContainer:{
     display:'flex',
     flexDirection:'row',
     alignItems:'center',
-    justifyContent:'space-around',
-    backgroundColor:'#00BFA5'
+    justifyContent:'space-between',
+    // backgroundColor:'#00BFA5',
+    padding:'1rem'
   },
   textContainer: {
     width: 200,
     height: 40,
-    borderRadius: 10,
+    borderRadius: '10px',
     backgroundColor: '#fff',
     margin: 10,
   },
   label: {
-    fontSize: 16,
+    fontSize: '16px',
     fontWeight: 'bold',
     color: '#000',
   },
@@ -232,11 +248,18 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: '#ccc',
     borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
+    // padding: 10,
+    borderRadius: '10px',
   },
   options: {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  header:{
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'center',
+    paddingTop:'0.5rem',
+    paddingBottom:'0.5rem'
+  }
 });

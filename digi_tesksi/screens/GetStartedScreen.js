@@ -50,14 +50,14 @@ const styles = StyleSheet.create({
   },
   header: {
     position: "relative",
-    fontSize: 50,
+    fontSize: '50px',
     color: "white",
     fontWeight: "bold",
   },
   title: {
     position: "relative",
-    marginTop:20,
-    fontSize: 20,
+    marginTop:'20px',
+    fontSize: '20px',
     color: "white",
     fontWeight: "normal",
   },

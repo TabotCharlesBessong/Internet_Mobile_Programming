@@ -73,22 +73,22 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#000',
     color: '#fff',
-    borderRadius: 10,
+    borderRadius: '10px',
     alignSelf: 'center',
-    marginTop: 20,
+    marginTop: '20px',
     // padding:'0.4rem 1rem',
-    paddingBottom:5,
-    paddingTop:5,
-    paddingLeft:16,
-    paddingLeft:16,
+    // paddingBottom:5,
+    // paddingTop:5,
+    // paddingLeft:16,
+    // paddingLeft:16,
     backgroundColor:'transparent',
     border:'1px solid #ffd600'
   },
   submitButtonText: {
-    fontSize: 24,
+    fontSize: '24px',
     // fontWeight: 'bold',
     color:'#ffd600',
     textTransform:'capitalize',
-    letterSpacing:4
+    // letterSpacing:4
   },
 });

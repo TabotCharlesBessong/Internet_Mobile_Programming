@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     padding:4,
     backgroundColor:'#00BFA5',
-    fontSize:20,
+    fontSize:'20px',
     fontWeight:'bold',
     textTransform:'capitalize',
     marginBottom:'1rem'

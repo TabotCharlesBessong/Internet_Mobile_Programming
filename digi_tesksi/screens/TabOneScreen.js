@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   title: {
     position: "relative",
-    fontSize: 20,
+    fontSize: '20px',
     fontWeight: "bold",
   },
   separator: {
