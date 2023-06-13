@@ -5,7 +5,7 @@ import "react-native-gesture-handler";
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import Navigation from './navigation';
+// import Navigation from './navigation';
 // import AppNavigator from './navigation/AppNavigator';
 import { ForgotPassword, ResetPasswordScreen, UpdateCredentialsScreen } from './screens';
 import { View, useColorScheme,StyleSheet,Text } from 'react-native';
@@ -30,7 +30,10 @@ const App = () => {
         {/* <ValidationScreen/> */}
         {/* <ForgotPassword/> */}
         {/* <ResetPasswordScreen/> */}
+<<<<<<< HEAD
         <UpdateCredentialsScreen/>
+=======
+>>>>>>> 8aa9e1636514a5ce430591e648e52245f07be91b
         <StatusBar />
       </SafeAreaProvider>
     );
