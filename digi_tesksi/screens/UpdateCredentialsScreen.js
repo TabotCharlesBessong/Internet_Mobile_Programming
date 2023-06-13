@@ -2,7 +2,7 @@
 import { StyleSheet, Text, View,Image,TextInput,TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { Icon } from 'react-native-elements';
-import tw from "tailwind-react-native-classnames";
+import tw from "twrnc";
 
 const UpdateCredentialsScreen = () => {
   const [username, setUsername] = useState('');

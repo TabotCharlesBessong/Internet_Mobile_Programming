@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 // import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 // import { SvgUri } from "react-native-svg";
-import tw from "tailwind-react-native-classnames";
+import tw from "twrnc";
 
 const GetStartedScreen = () => {
   return (

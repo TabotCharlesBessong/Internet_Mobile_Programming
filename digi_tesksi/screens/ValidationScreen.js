@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, TextInput, View, Text, Image, KeyboardAvoidingView, Keyboard, TouchableOpacity, ScrollView, } from 'react-native';
 import { Icon } from 'react-native-elements';
-import tw from 'tailwind-react-native-classnames'
+import tw from 'twrnc'
 
 const ValidationScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');

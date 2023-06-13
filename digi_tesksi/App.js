@@ -30,10 +30,8 @@ const App = () => {
         {/* <ValidationScreen/> */}
         {/* <ForgotPassword/> */}
         {/* <ResetPasswordScreen/> */}
-<<<<<<< HEAD
         <UpdateCredentialsScreen/>
-=======
->>>>>>> 8aa9e1636514a5ce430591e648e52245f07be91b
+
         <StatusBar />
       </SafeAreaProvider>
     );
