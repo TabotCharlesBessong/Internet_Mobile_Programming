@@ -160,11 +160,11 @@ const styles = StyleSheet.create({
   loginForm: {
     width: 300,
     margin: 100,
-    borderRadius: 10,
+    borderRadius: '10px',
     backgroundColor: '#eee',
   },
   title: {
-    fontSize: 24,
+    fontSize: '24px',
     textAlign: 'center',
   },
   input: {
@@ -179,8 +179,8 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#000',
     color: '#fff',
-    borderRadius: 10,
-    marginTop: 10,
+    borderRadius: '10px',
+    marginTop: '10px',
   },
 });
 
@@ -250,12 +250,12 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     alignSelf: 'center',
-    marginTop: 20,
+    marginTop: '20px',
   },
   form: {
     width: 300,
     margin: 20,
-    borderRadius: 10,
+    borderRadius: '10px',
     backgroundColor: '#eee',
   },
   input: {
@@ -269,19 +269,19 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#000',
     color: '#fff',
-    borderRadius: 10,
+    borderRadius: '10px',
     alignSelf: 'center',
-    marginTop: 20,
+    marginTop: '20px',
   },
   submitButtonText: {
-    fontSize: 18,
+    fontSize: '18px',
     fontWeight: 'bold',
   },
   error: {
     color: '#f00',
-    fontSize: 16,
+    fontSize: '16px',
     textAlign: 'center',
-    marginTop: 10,
+    marginTop: '10px',
   },
 });
 
@@ -336,12 +336,12 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     alignSelf: 'center',
-    marginTop: 20,
+    marginTop: '20px',
   },
   form: {
     width: 300,
     margin: 20,
-    borderRadius: 10,
+    borderRadius: '10px',
     backgroundColor: '#eee',
   },
   input: {
@@ -355,25 +355,25 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#000',
     color: '#fff',
-    borderRadius: 10,
+    borderRadius: '10px',
     alignSelf: 'center',
-    marginTop: 20,
+    marginTop: '20px',
   },
   submitButtonText: {
-    fontSize: 18,
+    fontSize: '18px',
     fontWeight: 'bold',
   },
   title: {
-    fontSize: 24,
+    fontSize: '24px',
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: '20px',
   },
   error: {
     color: '#f00',
-    fontSize: 16,
+    fontSize: '16px',
     textAlign: 'center',
-    marginTop: 10,
+    marginTop: '10px',
   },
 });
 

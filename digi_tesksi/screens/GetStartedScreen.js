@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 // import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 // import { SvgUri } from "react-native-svg";
-import tw from "tailwind-react-native-classnames";
+import tw from "twrnc";
 
 const GetStartedScreen = () => {
   return (
@@ -50,14 +50,14 @@ const styles = StyleSheet.create({
   },
   header: {
     position: "relative",
-    fontSize: 50,
+    fontSize: '50px',
     color: "white",
     fontWeight: "bold",
   },
   title: {
     position: "relative",
-    marginTop:20,
-    fontSize: 20,
+    marginTop:'20px',
+    fontSize: '20px',
     color: "white",
     fontWeight: "normal",
   },
