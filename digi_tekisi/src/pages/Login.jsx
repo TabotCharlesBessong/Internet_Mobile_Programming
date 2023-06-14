@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Style from "./Welcome.module.css"
 
 const Login = () => {
   const {
@@ -25,17 +26,18 @@ const Login = () => {
   const password = watch("password");
 
   return (
-    <div className="flex flex-col items-center relative bg-[#00BFA5] h-screen justify-center p-8">
+    <div className={`${Style.back} flex flex-col items-center relative w-screen h-screen justify-center p-8`}>
       <div className="w-full max-w-md">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-transparent flex flex-col justify-around px-8 pt-6 h-[20rem] pb-8 mb-4"
         >
-          <h2 className="text-4xl font-medium text-[#ff9f00] mb-4">
+          <h2 className="text-[28px] text-center font-normal capitalize text-[#ff9f00] mb-4">
             Welcome Back to DigiTekisi
           </h2>
           <div className="mb-4 relative p-2 border-2 border-gray-800 rounded-md">
             <input
+            placeholder="Email*"
               type="email"
               className={` bg-transparent form-input w-[90%] ${
                 errors.email ? "border-red-500" : ""
@@ -63,6 +65,7 @@ const Login = () => {
           </div>
           <div className="mb-4 relative p-2 border-2 border-gray-800 rounded-md">
             <input
+            placeholder="Password*"
               type={showPassword ? "text" : "password"}
               className={`bg-transparent form-input w-[90%] ${
                 errors.password ? "border-red-500" : ""
@@ -97,7 +100,7 @@ const Login = () => {
             <Link to="/">
               <button
                 type="submit"
-                className="bg-[#ff9f00]  hover:bg-blue-700 text-gray-800 font-medium py-2 px-12 rounded-2xl text-xl"
+                className={`${Style.btn} bg-[#ff9f00] hover:bg-blue-700 text-gray-800 font-normal py-2 px-12 rounded-[20px] text-[24px]`}
               >
                 Login
               </button>
@@ -105,13 +108,13 @@ const Login = () => {
           </div>
         </form>
 
-        <div className="absolute flex items-center justify-between bottom-10 w-[28rem]">
+        <div className="absolute flex items-center justify-between bottom-10 w-[20rem]">
           <Link to="/forgot">
-            <p className="text-xl text-white font-semibold">Forgot password?</p>
+            <p className="text-[16px] text-white font-normal">Forgot password?</p>
           </Link>
 
           <Link to="/signup">
-            <p className="text-xl text-[#ff9f00] font-semibold">
+            <p className="text-[16px] text-[#FF9F00] font-normal">
               Create account
             </p>
           </Link>
