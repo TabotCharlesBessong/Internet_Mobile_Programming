@@ -1,10 +1,11 @@
 
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const ResetPassword = () => {
   const {
     register,
     handleSubmit,
@@ -93,13 +94,45 @@ const Login = () => {
               </span>
             )}
           </div>
+          <div className="mb-4 relative p-2 border-2 border-gray-800 rounded-md">
+            <input
+              type={showPassword ? "text" : "password"}
+              className={`bg-transparent form-input w-[90%] ${
+                errors.password ? "border-red-500" : ""
+              }`}
+              id="password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password should be at least 6 characters",
+                },
+              })}
+            />
+            <label
+              htmlFor="password"
+              className="absolute top-0 right-0 text-gray-700 font-medium mr-2 mt-2 cursor-pointer"
+              onClick={toggleShowPassword}
+            >
+              {showPassword ? (
+                <FaRegEyeSlash className="text-2xl" />
+              ) : (
+                <FaRegEye className="text-2xl" />
+              )}
+            </label>
+            {errors.password && (
+              <span className="text-red-500 text-sm">
+                {errors.password.message}
+              </span>
+            )}
+          </div>
           <div className="flex items-center justify-center">
-            <Link to="/">
+            <Link to="/login">
               <button
                 type="submit"
                 className="bg-[#ff9f00]  hover:bg-blue-700 text-gray-800 font-medium py-2 px-12 rounded-2xl text-xl"
               >
-                Login
+                Change Password
               </button>
             </Link>
           </div>
@@ -121,4 +154,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResetPassword;

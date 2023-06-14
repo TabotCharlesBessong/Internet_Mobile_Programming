@@ -29,7 +29,7 @@ const WalkTroughPageOne = () => {
         </p>
       </div>
       <div className="bg-transparent p-8 text-center">
-        <Link to='intro2' >
+        <Link to='/intro2' >
           <button
             className={`bg-transparent hover:bg-[#ff9f00] text-[#ff9f00] hover:text-white font-medium py-2 tracking-wider px-6 text-xl capitalize flex items-center justify-center rounded-2xl border-2 border-[#ff9f00]`}
           >
