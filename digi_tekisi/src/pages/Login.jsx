@@ -26,7 +26,11 @@ const Login = () => {
   const password = watch("password");
 
   return (
+<<<<<<< HEAD
     <div className={`${Style.back} flex flex-col items-center relative w-screen h-screen justify-center p-8`}>
+=======
+    <div className="flex flex-col w-[100%] items-center relative bg-[#00BFA5] h-screen justify-center p-8">
+>>>>>>> 5f7699e22068db307f0a90a839a248f12b247a66
       <div className="w-full max-w-md">
         <form
           onSubmit={handleSubmit(onSubmit)}
