@@ -9,6 +9,8 @@ import SignupEndDto from './dto/signup-end.dto';
 import LoginDto from './dto/login.dto';
 import { ForgotPasswordDto } from './dto/forgot.dto';
 import { ResetPasswordDto } from './dto/reset.dto';
+import UpdateCredentialsDto from './dto/update-credentials.dto';
+import ActiveDto from './dto/active.dto';
 
 @Injectable()
 export class AuthService {
@@ -226,6 +228,74 @@ export class AuthService {
     return {
       ok: false,
       message: 'Password reset failed!',
+    };
+  }
+
+  async updateCredentials(updateInfo: UpdateCredentialsDto, userId: string) {
+    const currentUserData = await this.prisma.user.findUnique({
+      where: { id: userId },
+    });
+    if (!currentUserData) {
+      return {
+        ok: false,
+        error: 'The user you want to update does not exist!',
+      };
+    }
+    await this.prisma.user
+      .update({
+        data: {
+          email: updateInfo.email ? updateInfo.email : currentUserData.email,
+          password: updateInfo.password
+            ? hashPassword(updateInfo.password)
+            : currentUserData.password,
+        },
+        where: {
+          id: userId,
+        },
+      })
+      .then(() => {
+        return {
+          ok: true,
+          message: 'Credentials updated successfully',
+        };
+      })
+      .catch((error) => {
+        return {
+          ok: false,
+          error: error,
+        };
+      });
+  }
+
+  async changeStatus(active: ActiveDto) {
+    await this.prisma.user
+      .update({
+        data: {
+          isActive: active.activeStatus === 'ACTIVE' ? true : false,
+        },
+        where: {
+          id: active.userId,
+        },
+      })
+      .then(() => {
+        return {
+          ok: true,
+          message: 'Status updated successfully!',
+        };
+      })
+      .catch((error) => {
+        return {
+          ok: false,
+          error: error,
+        };
+      });
+  }
+
+  async getAllTestUsers() {
+    return {
+      ok: true,
+      message: 'Got all users!',
+      payload: await this.prisma.user.findMany(),
     };
   }
 }

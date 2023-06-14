@@ -23,7 +23,7 @@ model User {
 
 model Driver {
   id String @id @default(uuid())
-  telephone Int @unique
+  telephone String @unique
   tekisiName String @db.VarChar(20)
   licenceNum String @db.VarChar(6)
   user User @relation(fields: [userId], references: [id])
