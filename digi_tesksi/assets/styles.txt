@@ -1,0 +1,30 @@
+DIGITEKISI Logo
+{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
+
+
+color: #333333;
+}
+
+
+Second header{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 33px;
+text-align: center;
+letter-spacing: 0.2em;
+
+color: #FF9F00;
+
+}
+
+
+
+

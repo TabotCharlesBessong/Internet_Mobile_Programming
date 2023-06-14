@@ -25,7 +25,7 @@ const App = () => {
         {/* <AppNavigator/> */}
         <Text style={{font: '200px', color: 'white'}}>{AppName}</Text>
         {/* <GetStartedScreen/> */}
-        {/* <SignupScreen/> */}
+        <SignupScreen/>
         {/* <LoginScreen/> */}
         {/* <ValidationScreen/> */}
         {/* <ForgotPassword/> */}
