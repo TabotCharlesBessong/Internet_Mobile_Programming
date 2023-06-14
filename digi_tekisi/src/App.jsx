@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { ForgotPassword, Login, ResetPassword, Signup, ValidationPage, WalkTroughPageOne, WalkTroughPageThree, WalkTroughPageTwo, WelcomePage } from "./pages"
+import { ForgotPassword, Login, ResetPassword, Rides, Signup, ValidationPage, WalkTroughPageOne, WalkTroughPageThree, WalkTroughPageTwo, WelcomePage } from "./pages"
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
           <Route path="/validate" element={<ValidationPage/>} />
           <Route path="/forgot" element={<ForgotPassword/>} />
           <Route path="/reset" element={<ResetPassword/>} />
+          <Route path="/rides" element={<Rides/>} />
         </Routes>
       </Router>
     </>
