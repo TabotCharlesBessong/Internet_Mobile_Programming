@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { RideStatus } from '@prisma/client';
-import { Decimal } from '@prisma/client/runtime';
 import { IsDecimal, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateRideDto {

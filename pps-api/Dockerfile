@@ -16,6 +16,7 @@ ENV SESSION_STORE_URL=${SESSION_STORE_URL}
 WORKDIR /usr/src/app
 
 COPY --chown=node:node package.json pnpm-lock.yaml ./
+COPY prisma ./
 
 RUN npm install -g pnpm
 
@@ -30,13 +31,15 @@ WORKDIR /usr/src/app
 
 COPY --chown=node:node package.json pnpm-lock.yaml ./
 
+COPY prisma ./
+
 COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
 
 COPY --chown=node:node . .
 
 RUN npm install -g pnpm
 
-RUN pnpm run build
+RUN pnpm run build  
 
 # Build for production
 FROM node:18-alpine as production

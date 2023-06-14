@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,58 +8,58 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  isDriver Boolean @default(false)
-  email String @unique
+  id       String       @id @default(uuid())
+  isDriver Boolean      @default(false)
+  email    String       @unique
   password String
-  isActive Boolean @default(false)
-  driver Driver?
-  ride Ride[]
-  payments RidePayment[]
+  isActive Boolean      @default(false)
+  driver   Driver?
+  ride     Ride?
+  payments RidePayment?
 }
 
 model Driver {
-  id String @id @default(uuid())
-  telephone String @unique
-  tekisiName String @db.VarChar(20)
-  licenceNum String @db.VarChar(6)
-  user User @relation(fields: [userId], references: [id])
-  userId String @unique
-  ride Ride[]
+  id           String        @id @default(uuid())
+  telephone    String        @unique
+  tekisiName   String        @db.VarChar(20)
+  licenceNum   String        @db.VarChar(6)
+  userId       String        @unique
+  user         User          @relation(fields: [userId], references: [id])
+  ride         Ride?
+  payments     RidePayment?
   subscription Subscription?
-  payments RidePayment[]
 }
 
 model Ride {
-  id String @id @default(uuid())
-  origin String @db.VarChar(50)
-  destination String @db.VarChar(50)
-  status RideStatus
-  cost Float 
-  distance Float
-  passenger User @relation(fields: [passengerId], references: [id])
-  passengerId String @unique
-  driver Driver @relation(fields: [driverId], references: [id])
-  driverId String @unique
-  date DateTime
+  id          String     @id @default(uuid())
+  origin      String     @db.VarChar(50)
+  destination String     @db.VarChar(50)
+  status      RideStatus
+  cost        Float
+  distance    Float
+  passengerId String     @unique
+  driverId    String     @unique
+  date        DateTime
+  driver      Driver     @relation(fields: [driverId], references: [id])
+  passenger   User       @relation(fields: [passengerId], references: [id])
 }
 
 model Subscription {
-  id String @id @default(uuid())
-  type SubscriptionMode
-  amount SubscriptionAmount
+  id               String             @id @default(uuid())
+  type             SubscriptionMode
+  amount           SubscriptionAmount
   subscriptionDate DateTime
-  expirationDate DateTime
-  driver Driver @relation(fields: [driverId], references: [id])
-  driverId String @unique
+  expirationDate   DateTime
+  driverId         String             @unique
+  driver           Driver             @relation(fields: [driverId], references: [id])
 }
 
 model RidePayment {
-  id String @id @default(uuid())
-  passenger User @relation(fields: [passengerId], references: [id])
+  id          String @id @default(uuid())
   passengerId String @unique
-  driver Driver @relation(fields: [driverId], references: [id])
-  driverId String @unique
+  driverId    String @unique
+  driver      Driver @relation(fields: [driverId], references: [id])
+  passenger   User   @relation(fields: [passengerId], references: [id])
 }
 
 enum RideStatus {
@@ -80,8 +77,8 @@ enum SubscriptionMode {
 }
 
 enum SubscriptionAmount {
-  MONTHLY @map("1000")
+  MONTHLY   @map("1000")
   QUARTERLY @map("2500")
   BI_YEARLY @map("4000")
-  YEARLY @map("10000")
+  YEARLY    @map("10000")
 }
