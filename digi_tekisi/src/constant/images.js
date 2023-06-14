@@ -1,8 +1,10 @@
 
 import lambo from '../assets/lambo.png'
+import taksi from '../assets/taksi.jpeg'
 
 const images = {
-  lambo
+  lambo,
+  taksi
 }
 
 export default images
