@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { DriverSetting, ForgotPassword, Login, MakePayment, RegisterDriver, ResetPassword, Rides, Signup, ValidationPage, WalkTroughPageOne, WalkTroughPageThree, WalkTroughPageTwo, WelcomePage } from "./pages"
+import { DriverProfile, ForgotPassword, Login, MakePayment, RegisterDriver, ResetPassword, Rides, Signup, ValidationPage, WalkTroughPageOne, WalkTroughPageThree, WalkTroughPageTwo, WelcomePage } from "./pages"
 import { Footer } from "./component"
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
           <Route path="/reset" element={<ResetPassword/>} />
           <Route path="/rides" element={<Rides/>} />
           <Route path="/register" element={<RegisterDriver/>} />
-          <Route path="/driver/setting" element={<DriverSetting/>} />
           <Route path="/passenger/pay" element={<MakePayment/>} />
+          <Route path='/driver' element={<DriverProfile/>} />
         </Routes>
         <Footer/>
       </Router>
