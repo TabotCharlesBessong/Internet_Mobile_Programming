@@ -8,7 +8,7 @@ const Rides = () => {
   const [payed, setPayed] = useState(true);
   
   return (
-    <div className="flex flex-col items-center justify-evenly p-4">
+    <div className="flex max-w-md mx-auto flex-col items-center justify-evenly">
       <div className="flex flex-col items-center justify-evenly">
         <div className="mb-4 relative p-2 py-2 border-2 border-[#ff9f00] rounded-md">
           <label

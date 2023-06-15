@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Payed } from "../../component";
 
 const MakePayment = () => {
-  const [payedd, setPayedd] = useState(false);
+  const [payedd, setPayedd] = useState(false)
   
   
   return (

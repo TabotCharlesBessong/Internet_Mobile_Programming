@@ -1,6 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { DriverSetting, ForgotPassword, Login, MakePayment, RegisterDriver, ResetPassword, Rides, Signup, ValidationPage, WalkTroughPageOne, WalkTroughPageThree, WalkTroughPageTwo, WelcomePage } from "./pages"
+import { Footer } from "./component"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/driver/setting" element={<DriverSetting/>} />
           <Route path="/passenger/pay" element={<MakePayment/>} />
         </Routes>
+        <Footer/>
       </Router>
     </>
   )
