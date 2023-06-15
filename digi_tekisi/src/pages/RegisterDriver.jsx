@@ -1,6 +1,7 @@
 // RegisterDriver.js
 import React from "react";
 import { useForm } from "react-hook-form";
+import RidesCard from "../component/RidesCard";
 
 const RegisterDriver = () => {
   const {
@@ -89,6 +90,8 @@ const RegisterDriver = () => {
           Submit
         </button>
       </div>
+
+      <RidesCard/>
     </form>
   );
 };
