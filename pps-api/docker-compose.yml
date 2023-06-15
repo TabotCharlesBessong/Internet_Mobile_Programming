@@ -1,0 +1,8 @@
+version: '1.0.0'
+services:
+  digitekisi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env

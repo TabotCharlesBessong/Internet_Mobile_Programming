@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String       @id @default(uuid())
+  isDriver Boolean      @default(false)
+  email    String       @unique
+  password String
+  isActive Boolean      @default(false)
+  driver   Driver?
+  ride     Ride?
+  payments RidePayment?
+}
+
+model Driver {
+  id           String        @id @default(uuid())
+  telephone    String        @unique
+  tekisiName   String        @db.VarChar(20)
+  licenceNum   String        @db.VarChar(6)
+  userId       String        @unique
+  user         User          @relation(fields: [userId], references: [id])
+  ride         Ride?
+  payments     RidePayment?
+  subscription Subscription?
+}
+
+model Ride {
+  id          String     @id @default(uuid())
+  origin      String     @db.VarChar(50)
+  destination String     @db.VarChar(50)
+  status      RideStatus
+  cost        Float
+  distance    Float
+  passengerId String     @unique
+  driverId    String     @unique
+  date        DateTime
+  driver      Driver     @relation(fields: [driverId], references: [id])
+  passenger   User       @relation(fields: [passengerId], references: [id])
+}
+
+model Subscription {
+  id               String             @id @default(uuid())
+  type             SubscriptionMode
+  amount           SubscriptionAmount
+  subscriptionDate DateTime
+  expirationDate   DateTime
+  driverId         String             @unique
+  driver           Driver             @relation(fields: [driverId], references: [id])
+}
+
+model RidePayment {
+  id          String @id @default(uuid())
+  passengerId String @unique
+  driverId    String @unique
+  driver      Driver @relation(fields: [driverId], references: [id])
+  passenger   User   @relation(fields: [passengerId], references: [id])
+}
+
+enum RideStatus {
+  CANCELLED
+  IN_TRANSIT
+  COMPLETED
+  NOT_STARTED
+}
+
+enum SubscriptionMode {
+  MONTHLY
+  QUARTERLY
+  BI_YEARLY
+  YEARLY
+}
+
+enum SubscriptionAmount {
+  MONTHLY   @map("1000")
+  QUARTERLY @map("2500")
+  BI_YEARLY @map("4000")
+  YEARLY    @map("10000")
+}
