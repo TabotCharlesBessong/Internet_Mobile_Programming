@@ -8,7 +8,7 @@ const DriverProfile = () => {
     <div className="flex flex-col p-2 px-2">
       <ProfileHeader />
       <div className="px-2 p-2 flex flex-col">
-        <div className="text-left capitalize text-3xl text-[#00BFA5]">
+        <div className="text-left max-w-md mx-auto capitalize text-3xl text-[#00BFA5]">
           <p>successful rides</p>
         </div>
         <div className="flex flex-col item-center h-auto">

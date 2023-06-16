@@ -3,7 +3,7 @@ import React from "react";
 
 const Subscription = () => {
   return (
-    <div className="flex flex-col px-2 p-2 items-start">
+    <div className="flex max-w-md mx-auto flex-col px-2 p-2 items-start">
       <div className="text-left capitalize text-2xl text-[#00BFA5]">
         <p>subscription</p>
       </div>

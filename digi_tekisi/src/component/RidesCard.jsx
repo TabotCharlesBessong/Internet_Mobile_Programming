@@ -3,7 +3,7 @@ import images from "../constant/images";
 
 const RidesCard = ({img,from,to,price,date}) => {
   return (
-    <div className="flex items-center rounded-xl justify-between bg-green-800 min-w-[460px] max-w-md my-2 px-2 p-1">
+    <div className="flex max-w-md mx-auto items-center rounded-xl justify-between bg-green-800 min-w-[460px] my-2 px-2 p-1">
       <div className="w-[100px] h-[60px] flex  ">
         <img src={img} alt="" />
       </div>
