@@ -1,124 +1,81 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import Style from "./Welcome.module.css";
-import axios from "axios";
+import React, { useState } from "react";
+import GoogleMapReact from "google-map-react";
 
-const Signup = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm();
+const MapContainer = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
-  const [showPassword, setShowPassword] = useState(false);
-
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
+  const defaultProps = {
+    center: {
+      lat: 37.7749,
+      lng: -122.4194,
+    },
+    zoom: 12,
   };
 
-  const onSubmit = (data) => {
-    axios.post("https://digitekisi.onrender.com/api/auth/signup-start", data)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
+  const renderMarkers = (map, maps) => {
+    // Render markers for roads and taxis here
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
+    if (event.target.value.trim() !== "") {
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: event.target.value }, (results, status) => {
+        if (status === window.google.maps.GeocoderStatus.OK) {
+          setSearchResults(
+            results.map((result) => ({
+              lat: result.geometry.location.lat(),
+              lng: result.geometry.location.lng(),
+              name: result.formatted_address,
+            }))
+          );
+        } else {
+          setSearchResults([]);
+        }
       });
+    } else {
+      setSearchResults([]);
+    }
   };
 
-  const password = watch("password");
+  const handleResultClick = (result) => {
+    defaultProps.center.lat = result.lat;
+    defaultProps.center.lng = result.lng;
+  };
 
   return (
-    <div className={`${Style.back} w-screen flex flex-col items-center relative h-screen justify-center p-8`}>
-      <div className="w-full max-w-md">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="bg-transparent flex flex-col justify-around px-8 pt-6 h-[20rem] pb-8 mb-4"
-        >
-          <h2 className="text-[28px] text-center font-normal capitalize text-[#ff9f00] mb-4">
-            Create your DigiTekisi account
-          </h2>
-          <div className="mb-4 relative p-2 border-2 border-gray-800 rounded-md">
-            <input
-              placeholder="Email*"
-              type="email"
-              className={` bg-transparent form-input w-[90%] ${
-                errors.email ? "border-red-500" : ""
-              }`}
-              id="email"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /\S+@\S+\.\S+/,
-                  message: "Invalid email address",
-                },
-              })}
-            />
-            <label
-              htmlFor="email"
-              className="absolute top-0 right-0 text-gray-700 font-medium mr-2 mt-2"
-            >
-              <FaEnvelope className="text-2xl" />
-            </label>
-            {errors.email && (
-              <span className="text-red-500 text-sm">
-                {errors.email.message}
-              </span>
-            )}
-          </div>
-          <div className="mb-4 relative p-2 border-2 border-gray-800 rounded-md">
-            <input
-              placeholder="Password*"
-              type={showPassword ? "text" : "password"}
-              className={`bg-transparent form-input w-[90%] ${
-                errors.password ? "border-red-500" : ""
-              }`}
-              id="password"
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password should be at least 6 characters",
-                },
-              })}
-            />
-            <label
-              htmlFor="password"
-              className="absolute top-0 right-0 text-gray-700 font-medium mr-2 mt-2 cursor-pointer"
-              onClick={toggleShowPassword}
-            >
-              {showPassword ? (
-                <FaRegEyeSlash className="text-2xl" />
-              ) : (
-                <FaRegEye className="text-2xl" />
-              )}
-            </label>
-            {errors.password && (
-              <span className="text-red-500 text-sm">
-                {errors.password.message}
-              </span>
-            )}
-          </div>
-          <div className="flex items-center justify-center">
-            <button
-              type="submit"
-              className="bg-[#ff9f00]  hover:bg-blue-700 text-gray-800 font-normal py-2 px-12 rounded-[20px] text-[24px]"
-            >
-              Signup
-            </button>
-          </div>
-        </form>
-        <div className="absolute flex items-center justify-center bottom-10 w-[20rem]">
-          <Link to="/login">
-            <p className="text-[16px] text-white font-normal">Login Instead?</p>
-          </Link>
-        </div>
+    <div className='w-full h-[365px]'>
+      <div className='absolute top-0 left-0 z-10 p-4'>
+        <input
+          type='text'
+          placeholder='Search for a location'
+          value={searchValue}
+          onChange={handleSearchChange}
+          className='w-full px-4 py-2 text-gray-800 bg-white rounded-lg shadow-md focus:outline-none focus:shadow-outline'
+        />
+        {searchResults.length > 0 && (
+          <ul className='py-2 mt-1 bg-white rounded-lg shadow-md'>
+            {searchResults.map((result) => (
+              <li
+                key={result.name}
+                onClick={() => handleResultClick(result)}
+                className='px-4 py-2 hover:bg-gray-200 cursor-pointer'
+              >
+                {result.name}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: import.meta.env.MAP_API_KEY }}
+        defaultCenter={defaultProps.center}
+        defaultZoom={defaultProps.zoom}
+        onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
+      />
     </div>
   );
 };
 
-export default Signup;
+export default MapContainer;
