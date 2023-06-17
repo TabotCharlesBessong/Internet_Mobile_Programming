@@ -1,10 +1,9 @@
-
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaCode } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Style from "./Welcome.module.css";
+import axios from "axios";
 
 const ValidationPage = () => {
   const {
@@ -13,6 +12,7 @@ const ValidationPage = () => {
     formState: { errors },
     watch,
   } = useForm();
+  const navigate = useNavigate()
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -21,13 +21,22 @@ const ValidationPage = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    axios
+      .post("https://digitekisi.onrender.com/api/auth/signup-end", data)
+      .then((response) => {
+        console.log(response);
+      }).then(navigate('/'))
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const password = watch("password");
 
   return (
-    <div className={`${Style.back} flex flex-col items-center relative h-screen justify-center p-8`}>
+    <div
+      className={`${Style.back} flex flex-col items-center relative h-screen justify-center p-8`}
+    >
       <div className="w-full max-w-md">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -39,7 +48,7 @@ const ValidationPage = () => {
 
           <div className="mb-4 relative p-2 border-2 border-gray-800 rounded-md">
             <input
-              type='text'
+              type="text"
               placeholder="Verification Code*"
               className={`bg-transparent form-input w-[90%] ${
                 errors.password ? "border-red-500" : ""
@@ -67,20 +76,22 @@ const ValidationPage = () => {
             )}
           </div>
           <div className="flex items-center justify-center">
-            <Link to='/' >
-              <button
-                type="submit"
-                className="bg-[#ff9f00]  hover:bg-blue-700 text-gray-800 font-normal py-2 px-12 rounded-[20px] text-[24px]"
-              >
-                Validate
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="bg-[#ff9f00]  hover:bg-blue-700 text-gray-800 font-normal py-2 px-12 rounded-[20px] text-[24px]"
+            >
+              {/* <Link to='/' > */}
+              Validate
+              {/* </Link> */}
+            </button>
           </div>
         </form>
 
         <div className="absolute flex items-center justify-between bottom-10 w-[20rem]">
           <Link to="/login">
-            <p className="text-[16px] text-white font-normal">Go back to login</p>
+            <p className="text-[16px] text-white font-normal">
+              Go back to login
+            </p>
           </Link>
 
           <Link to="/signup">

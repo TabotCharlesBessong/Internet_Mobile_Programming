@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Style from "./Welcome.module.css"
+import axios from "axios";
 
 const Login = () => {
   const {
@@ -12,6 +13,7 @@ const Login = () => {
     formState: { errors },
     watch,
   } = useForm();
+  const navigate = useNavigate()
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -20,7 +22,14 @@ const Login = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    axios
+      .post("https://digitekisi.onrender.com/api/auth/login", data)
+      .then((response) => {
+        console.log(response);
+      }).then(navigate('/'))
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const password = watch("password");
@@ -98,14 +107,14 @@ const Login = () => {
             )}
           </div>
           <div className="flex items-center justify-center">
-            <Link to="/">
+            {/* <Link to="/"> */}
               <button
                 type="submit"
                 className={`${Style.btn} bg-[#ff9f00] hover:bg-blue-700 text-gray-800 font-normal py-2 px-12 rounded-[20px] text-[24px]`}
               >
                 Login
               </button>
-            </Link>
+            {/* </Link> */}
           </div>
         </form>
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link,useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Style from "./Welcome.module.css";
 import axios from "axios";
 
@@ -12,7 +12,6 @@ const Signup = () => {
     formState: { errors },
     watch,
   } = useForm();
-  const navigate = useNavigate()
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -21,12 +20,11 @@ const Signup = () => {
   };
 
   const onSubmit = (data) => {
-    axios
-      .post("https://digitekisi.onrender.com/api/auth/signup-start", data)
-      .then((response) => {
+    axios.post("https://digitekisi.onrender.com/api/auth/signup-start", data)
+      .then(response => {
         console.log(response);
-      }).then(navigate('/login'))
-      .catch((error) => {
+      })
+      .catch(error => {
         console.log(error);
       });
   };
@@ -34,9 +32,7 @@ const Signup = () => {
   const password = watch("password");
 
   return (
-    <div
-      className={`${Style.back} w-screen flex flex-col items-center relative h-screen justify-center p-8`}
-    >
+    <div className={`${Style.back} w-screen flex flex-col items-center relative h-screen justify-center p-8`}>
       <div className="w-full max-w-md">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -108,7 +104,6 @@ const Signup = () => {
           </div>
           <div className="flex items-center justify-center">
             <button
-              // onClick={navigate('/login')}
               type="submit"
               className="bg-[#ff9f00]  hover:bg-blue-700 text-gray-800 font-normal py-2 px-12 rounded-[20px] text-[24px]"
             >

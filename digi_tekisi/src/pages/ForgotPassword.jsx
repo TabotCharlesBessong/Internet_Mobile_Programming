@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ForgotPassword = () => {
   const {
@@ -12,6 +13,7 @@ const ForgotPassword = () => {
     formState: { errors },
     watch,
   } = useForm();
+  const navigate = useNavigate()
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -20,7 +22,15 @@ const ForgotPassword = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    axios
+      .post("https://digitekisi.onrender.com/api/auth/forgot-password", data)
+      .then((response) => {
+        console.log(response);
+      })
+      .then(navigate("/login"))
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const password = watch("password");
