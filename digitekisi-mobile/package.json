@@ -22,9 +22,11 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
     "@capacitor/core": "5.0.5",
+    "@capacitor/google-maps": "^5.1.2",
     "@ionic/angular": "^7.0.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
+    "swiper": "^9.4.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
