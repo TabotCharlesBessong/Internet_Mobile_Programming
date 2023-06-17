@@ -1,37 +1,33 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Style from "./Welcome.module.css";
 import axios from "axios";
 
 const Signup = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const onSubmit = (data) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = { email, password };
     axios
       .post("https://digitekisi.onrender.com/api/auth/signup-start", data)
       .then((response) => {
         console.log(response);
-      }).then(navigate('/login'))
+        navigate("/validate"); // navigate to login page on successful signup
+      })
       .catch((error) => {
         console.log(error);
       });
   };
-
-  const password = watch("password");
 
   return (
     <div
@@ -39,7 +35,7 @@ const Signup = () => {
     >
       <div className="w-full max-w-md">
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit}
           className="bg-transparent flex flex-col justify-around px-8 pt-6 h-[20rem] pb-8 mb-4"
         >
           <h2 className="text-[28px] text-center font-normal capitalize text-[#ff9f00] mb-4">
@@ -49,17 +45,10 @@ const Signup = () => {
             <input
               placeholder="Email*"
               type="email"
-              className={` bg-transparent form-input w-[90%] ${
-                errors.email ? "border-red-500" : ""
-              }`}
+              className={` bg-transparent form-input w-[90%]`}
               id="email"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /\S+@\S+\.\S+/,
-                  message: "Invalid email address",
-                },
-              })}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label
               htmlFor="email"
@@ -67,27 +56,15 @@ const Signup = () => {
             >
               <FaEnvelope className="text-2xl" />
             </label>
-            {errors.email && (
-              <span className="text-red-500 text-sm">
-                {errors.email.message}
-              </span>
-            )}
           </div>
           <div className="mb-4 relative p-2 border-2 border-gray-800 rounded-md">
             <input
               placeholder="Password*"
               type={showPassword ? "text" : "password"}
-              className={`bg-transparent form-input w-[90%] ${
-                errors.password ? "border-red-500" : ""
-              }`}
+              className={`bg-transparent form-input w-[90%]`}
               id="password"
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password should be at least 6 characters",
-                },
-              })}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <label
               htmlFor="password"
@@ -100,15 +77,9 @@ const Signup = () => {
                 <FaRegEye className="text-2xl" />
               )}
             </label>
-            {errors.password && (
-              <span className="text-red-500 text-sm">
-                {errors.password.message}
-              </span>
-            )}
           </div>
           <div className="flex items-center justify-center">
             <button
-              // onClick={navigate('/login')}
               type="submit"
               className="bg-[#ff9f00]  hover:bg-blue-700 text-gray-800 font-normal py-2 px-12 rounded-[20px] text-[24px]"
             >
