@@ -34,6 +34,26 @@
     <ion-input aria-label="whereTo" placeholder="Where are you going to?"  class="w-full mx-auto bg-transparent rounded-2xl placeholder:pl-2 border-solid border-2 border-brightOrange h-14 text-darkChocolate text-xl"/>
   </div>
   <div class="w-full p-2">
-    <capacitor-google-map id="map" #map></capacitor-google-map>
+    <capacitor-google-map id="digitekisi-map" #mapRef></capacitor-google-map>
+  </div>
+  <div class="w-[90%] mx-auto flex items-center justify-end">
+    <ion-button color="none" class="bg-brightTurqoise">Explore Traffic</ion-button>
+  </div>
+  <div class="w-[90%] mx-auto flex items-center justify-center">
+    <h1 class="text-darkChocolate">Current Booking</h1>
+    <div class="w-full py-6 rounded-md shadow-2xl flex flex-col items-center justify-between">
+      <span class="w-[90%] mx-auto flex items-center justify-between text-sm">
+        <p>From: UB Junction</p>
+        <button class="rounded-2xl bg-gradient-primary shadow-lg px-2 py-2">Cancel</button>
+      </span>
+      <span class="w-[90%] mx-auto flex items-center justify-between text-sm">
+        <p>To: Checkpoint</p>
+        <button class="rounded-2xl bg-gradient-primary shadow-lg px-2 py-2">XAF 500</button>
+      </span>
+    </div>
   </div>
 </div>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;

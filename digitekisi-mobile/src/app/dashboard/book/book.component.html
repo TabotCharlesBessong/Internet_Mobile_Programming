@@ -1,3 +1,12 @@
-<p>
-  book works!
-</p>
+<div class="w-full py-3">
+    <div class="w-[90%] mx-auto flex flex-col space-y-6">
+      <ion-input aria-label="whereTo" placeholder="Where are you headed?"  class="w-full mx-auto bg-transparent rounded-2xl placeholder:pl-2 border-solid border-2 border-brightOrange h-14 text-darkChocolate text-xl"/>
+      <ion-select aria-label="Select Driver"  class="rounded-2xl bg-transparent text-darkChocolate border-solid border-2 border-brightOrange" placeholder="Select Driver">
+        <ion-select-option selected value="passenger">Tekisi Man 1</ion-select-option>
+        <ion-select-option value="driver">TekisiMan 2</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="w-full p-2">
+      <capacitor-google-map id="digitekisi-map" #mapRef></capacitor-google-map>
+    </div>
+</div>
