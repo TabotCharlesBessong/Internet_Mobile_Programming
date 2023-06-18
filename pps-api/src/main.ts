@@ -11,7 +11,6 @@ async function bootstrap() {
   const PORT = process.env.PORT || 3333;
   app.useGlobalPipes(new ValidationPipe());
   const configService: ConfigService = new ConfigService();
-
   app.enableCors({ origin: true, credentials: true });
   const mongoDBSession = MongoDBStore(session);
   const mongoStore = new mongoDBSession({
