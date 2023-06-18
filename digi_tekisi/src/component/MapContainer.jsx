@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import { useState } from "react";
@@ -9,8 +7,8 @@ const MapContainer = () => {
   const [searchResults, setSearchResults] = useState([]);
   const defaultProps = {
     center: {
-      lat: 37.7749,
-      lng: -122.4194,
+      lat: 4.1521,
+      lng: 9.2412,
     },
     zoom: 15,
   };
@@ -33,15 +31,12 @@ const MapContainer = () => {
       return locations;
     }
 
-    const start = { lat: 37.7749, lng: -122.4194 };
-    const end = { lat: 37.7786, lng: -122.3893 };
+    const bueaStart = { lat: 4.1596, lng: 9.2316 };
+    const bueaEnd = { lat: 4.1343, lng: 9.2677 };
 
-    const roadLocations = generateLocations(start, end, 20);
+    const roadLocations = generateLocations(bueaStart, bueaEnd, 20);
 
-    const taxiStart = { lat: 37.7729, lng: -122.4301 };
-    const taxiEnd = { lat: 37.7766, lng: -122.4 };
-
-    const taxiLocations = generateLocations(taxiStart, taxiEnd, 20);
+    const taxiLocations = generateLocations(bueaStart, bueaEnd, 10);
 
     roadLocations.forEach((location) => {
       const marker = new maps.Marker({
@@ -72,19 +67,28 @@ const MapContainer = () => {
     setSearchValue(event.target.value);
     if (event.target.value.trim() !== "") {
       const geocoder = new window.google.maps.Geocoder();
-      geocoder.geocode({ address: event.target.value }, (results, status) => {
-        if (status === window.google.maps.GeocoderStatus.OK) {
-          setSearchResults(
-            results.map((result) => ({
-              lat: result.geometry.location.lat(),
-              lng: result.geometry.location.lng(),
-              name: result.formatted_address,
-            }))
-          );
-        } else {
-          setSearchResults([]);
+      const bueaBounds = {
+        north: 4.1873,
+        south: 4.1091,
+        east: 9.2924,
+        west: 9.1946,
+      };
+      geocoder.geocode(
+        { address: event.target.value, bounds: bueaBounds },
+        (results, status) => {
+          if (status === window.google.maps.GeocoderStatus.OK) {
+            setSearchResults(
+              results.map((result) => ({
+                lat: result.geometry.location.lat(),
+                lng: result.geometry.location.lng(),
+                name: result.formatted_address,
+              }))
+            );
+          } else {
+            setSearchResults([]);
+          }
         }
-      });
+      );
     } else {
       setSearchResults([]);
     }
@@ -97,16 +101,16 @@ const MapContainer = () => {
 
   return (
     <div className="w-full h-[365px]">
-      <div className="absolute top-0 left-0 z-10 p-4">
+      <div className="absolute max-w-md mx-auto top-0 left-0 z-10 p-4">
         <input
           type="text"
-          placeholder="Search for a location"
+          placeholder="Search for a location in Buea"
           value={searchValue}
           onChange={handleSearchChange}
           className="w-full px-4 py-2 text-gray-800 bg-white rounded-lg shadow-md focus:outline-none focus:shadow-outline"
         />
         {searchResults.length > 0 && (
-          <ul className="py-2 mt-1 bg-white rounded-lg shadow-md">
+          <ul className="py-2 mt-1 bg-white rounded-lgshadow-md">
             {searchResults.map((result) => (
               <li
                 key={result.name}
