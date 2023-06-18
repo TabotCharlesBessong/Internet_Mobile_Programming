@@ -10,7 +10,7 @@ const Rides = () => {
   return (
     <div className="flex max-w-md mx-auto flex-col items-center justify-evenly">
       <div className="flex flex-col items-center justify-evenly">
-        <div className="mb-4 relative p-2 py-2 border-2 border-[#ff9f00] rounded-md">
+        {/* <div className="mb-4 relative p-2 py-2 border-2 border-[#ff9f00] rounded-md">
           <label
             htmlFor="email"
             className="absolute top-0 left-0 text-gray-700 font-medium mr-2 mt-2"
@@ -22,7 +22,7 @@ const Rides = () => {
             className={` bg-transparent form-input w-[90%]`}
             id="email"
           />
-        </div>
+        </div> */}
         <h2 className="text 2xl text-black text-center">CE 237 BT</h2>
       </div>
       <MapContainer />
