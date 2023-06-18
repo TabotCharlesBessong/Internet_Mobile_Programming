@@ -25,7 +25,7 @@ const Login = () => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("accessToken", response.data.accessToken); // store the access token in local storage
-        navigate("/rides");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
