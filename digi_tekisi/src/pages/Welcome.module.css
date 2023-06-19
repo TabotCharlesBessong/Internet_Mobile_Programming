@@ -1,0 +1,9 @@
+.back{
+    background: linear-gradient(180deg, #00BFA5 0%, #333333 100%);
+}
+
+.btn{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* background-color: white; */
+    /* background: linear-gradient(180deg, #FFD600 0%, #FF9F00 100%); */
+}

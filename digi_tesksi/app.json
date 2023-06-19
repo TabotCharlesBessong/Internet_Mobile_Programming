@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "digi_tesksi",
+    "slug": "digi_tesksi",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "digi_tesksi"
+}
