@@ -2,7 +2,7 @@
 import React from "react";
 import images from "../../constant/images";
 
-const ProfileHeader = () => {
+const ProfileHeader = ({isDriver}) => {
   return (
     <div className="flex border-b-2 border-green-500 px-6 max-w-md mx-auto items-center justify-between">
       <div className="w-[120px] h-[120px] flex items-center rounded-full">
@@ -13,8 +13,16 @@ const ProfileHeader = () => {
         <p className="font-semibold text xl text-black"> zerabatos@gmail.com</p>
       </div>
       <div className="flex flex-col items-end justify-around px-2">
-        <p className="font-bold text 2xl text-black">Drvier</p>
-        <p className="font-semibold text xl text-[#00BFA5]">Subscribed</p>
+        <p className="font-bold text 2xl text-black">
+          {
+            isDriver ? 'Driver' :'Passenger'
+          }
+        </p>
+        <p className="font-semibold text xl text-[#00BFA5]">
+          {
+            isDriver && 'Subscribed'
+          }
+        </p>
       </div>
     </div>
   );

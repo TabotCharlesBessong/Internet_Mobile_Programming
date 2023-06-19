@@ -10,7 +10,7 @@ const RegisterDriver = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const url = `https://digitekisi.onrender.com/api/driver/become?Id=2394ce0f-ee50-470d-8249-be0daa0522f`;
+    const url = `https://digitekisi.onrender.com/api/driver/become?userId=2394ce0f-ee50-470d-8249-be0daa0522f`;
 
     try {
       const response = await axios.post(url, {
@@ -51,7 +51,8 @@ const RegisterDriver = () => {
           Driver Name
         </label>
         <input
-          id="driverName"
+          id="tekisiName"
+          name="tekisiName"
           value={driverName}
           onChange={(event) => setDriverName(event.target.value)}
           className="mt-2 px-2 p-2 block w-full border border-[#ff9f00] rounded-2xl"
@@ -64,6 +65,7 @@ const RegisterDriver = () => {
         </label>
         <input
           id="telephone"
+          name="telephone"
           value={telephone}
           onChange={(event) => setTelephone(event.target.value)}
           className="mt-2 px-2 p-2 block w-full border border-[#ff9f00] rounded-2xl"
@@ -75,7 +77,8 @@ const RegisterDriver = () => {
           Car Driver License Number
         </label>
         <input
-          id="license"
+          id="licenceNum"
+          name="licenceNum"
           value={license}
           onChange={(event) => setLicense(event.target.value)}
           className="mt-2 px-2 p-2 block w-full border border-[#ff9f00] rounded-2xl"

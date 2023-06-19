@@ -13,7 +13,7 @@ const PassengerProfile = () => {
   
   return (
     <div className="flex flex-col p-2 px-2">
-      <ProfileHeader />
+      <ProfileHeader isDriver={isDriver} />
       <div className="px-2 p-2 flex flex-col">
         <div className="text-left max-w-md mx-auto capitalize text-3xl text-[#00BFA5]">
           <p>successful rides</p>

@@ -133,7 +133,7 @@ function App() {
         console.log(response);
         localStorage.setItem("accessToken", response.data.accessToken); // store the access token in local storage
         setLoggedIn(true)
-        navigate("/");
+        navigate("/rides");
       })
       .catch((error) => {
         console.log(error);
@@ -186,33 +186,38 @@ function App() {
         <Route path="/validate" element={<ValidationPage />} />
         <Route path="/forgot" element={<ForgotPassword />} />
         <Route path="/reset" element={<ResetPassword />} />
-        {/* <Route path="/rides" element={<PrivateRoutes loggedIn={loggedIn} />}> */}
+        <Route path="/rides" element={<PrivateRoutes loggedIn={loggedIn} />}>
         <Route path="/rides" element={<Rides />} />
-        {/* </Route> */}
-        {/* <Route path="/register" element={<PrivateRoutes loggedIn={loggedIn} />}> */}
+        </Route>
+        <Route path="/register" element={<PrivateRoutes loggedIn={loggedIn} />}>
         <Route path="/register" element={<RegisterDriver />} />
-        {/* </Route> */}
-        {/* <Route
+        </Route>
+        <Route
           path="/passenger/pay"
           element={<PrivateRoutes loggedIn={loggedIn} />}
-        > */}
+        >
         <Route path="/passenger/pay" element={<MakePayment />} />
-        {/* </Route> */}
-        {/* <Route
+        </Route>
+        <Route
           path="/driver"
           element={<PrivateRoutes loggedIn={loggedIn} />}
-        > */}
+        >
         <Route
           path="/driver"
           element={<DriverProfile passengerId={passengerId} />}
         />
-        {/* </Route> */}
+        </Route>
         <Route
           path="/passenger"
           element={<PassengerProfile />}
         />
+        {/* <Route element={<Error/>} /> */}
       </Routes>
+      {
+        loggedIn && 
       <Footer />
+      }
+
       {/* </Router> */}
     </>
   );
