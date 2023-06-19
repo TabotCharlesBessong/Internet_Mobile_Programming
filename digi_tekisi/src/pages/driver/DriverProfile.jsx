@@ -2,8 +2,11 @@
 import React from "react";
 import {DriverSetting, ProfileHeader, RidesCard, Subscription} from '../../component'
 import images from "../../constant/images";
+import { useState } from "react";
 
 const DriverProfile = () => {
+  const [isDriver, setIsDriver] = useState(true);
+  
   return (
     <div className="flex flex-col p-2 px-2">
       <ProfileHeader />

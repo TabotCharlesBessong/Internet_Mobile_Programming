@@ -1,26 +1,46 @@
-// RegisterDriver.js
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
+import axios from "axios";
 
 const RegisterDriver = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const [driverName, setDriverName] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [license, setLicense] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const url = `https://digitekisi.onrender.com/api/driver/become?Id=2394ce0f-ee50-470d-8249-be0daa0522f`;
+
+    try {
+      const response = await axios.post(url, {
+        driverName,
+        telephone,
+        license,
+      });
+
+      console.log(response.data);
+      // Reset form fields
+      setDriverName("");
+      setTelephone("");
+      setLicense("");
+      setErrorMessage("");
+    } catch (error) {
+      console.error(error);
+      setErrorMessage(error.message);
+    }
   };
 
-  const onCancel = () => {
-    reset();
+  const handleCancel = () => {
+    setDriverName("");
+    setTelephone("");
+    setLicense("");
+    setErrorMessage("");
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit}
       className="space-y-4 p-4 flex flex-col items-center"
     >
       <h2 className="text capitalize text-4xl text-left text-[#00BFA5]">
@@ -32,12 +52,10 @@ const RegisterDriver = () => {
         </label>
         <input
           id="driverName"
-          {...register("driverName", { required: true })}
+          value={driverName}
+          onChange={(event) => setDriverName(event.target.value)}
           className="mt-2 px-2 p-2 block w-full border border-[#ff9f00] rounded-2xl"
         />
-        {errors.driverName && (
-          <p className="text-red-500 text-xs">Driver Name is required</p>
-        )}
       </div>
 
       <div className="max-w-md min-w-[30rem]">
@@ -46,12 +64,10 @@ const RegisterDriver = () => {
         </label>
         <input
           id="telephone"
-          {...register("telephone", { required: true })}
+          value={telephone}
+          onChange={(event) => setTelephone(event.target.value)}
           className="mt-2 px-2 p-2 block w-full border border-[#ff9f00] rounded-2xl"
         />
-        {errors.telephone && (
-          <p className="text-red-500 text-xs">Telephone Number is required</p>
-        )}
       </div>
 
       <div className="max-w-md min-w-[30rem]">
@@ -60,24 +76,18 @@ const RegisterDriver = () => {
         </label>
         <input
           id="license"
-          {...register("license", {
-            required: true,
-            pattern: /^[A-Z]{2}\d{3,4}[A-Z]{2}$/,
-          })}
+          value={license}
+          onChange={(event) => setLicense(event.target.value)}
           className="mt-2 px-2 p-2 block w-full border border-[#ff9f00] rounded-2xl"
         />
-        {errors.license && (
-          <p className="text-red-500 text-xs">
-            License Number must be in the format: 2 capital letters, 3 or 4
-            numbers, and 2 capital letters
-          </p>
-        )}
       </div>
+
+      {errorMessage && <p className="text-red-500 text-xs">{errorMessage}</p>}
 
       <div className="mt-4 flex justify-between space-x-2">
         <button
           type="button"
-          onClick={onCancel}
+          onClick={handleCancel}
           className="px-6 py-2 bg-[#00BFA5] border border-gray-300 rounded-md"
         >
           Cancel

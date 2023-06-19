@@ -4,12 +4,14 @@ import {
   Routes,
   Route,
   Navigate,
+  useNavigate
 } from "react-router-dom";
 import {
   DriverProfile,
   ForgotPassword,
   Login,
   MakePayment,
+  PassengerProfile,
   RegisterDriver,
   ResetPassword,
   Rides,
@@ -23,21 +25,6 @@ import {
 import { Footer, PrivateRoutes } from "./component";
 import axios from "axios";
 
-function PrivateRoute({ element: Element, authenticated, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      element={
-        authenticated ? (
-          <Element />
-        ) : (
-          <Navigate to="/login" replace state={{ from: rest.path }} />
-        )
-      }
-    />
-  );
-}
-
 function App() {
   const [activeUser, setActiveUser] = useState({});
   const [driverUsers, setDriverUsers] = useState([]);
@@ -47,6 +34,13 @@ function App() {
   const [passengerRides, setPassengerRides] = useState([]);
   const [driverRides, setDriverRides] = useState([]);
   const [rides, setRides] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+
+  const passengerId = '2394ce0f-ee50-470d-8249-be0daa0522f'
+  const navigate = useNavigate()
   
 
   const getUsers = () => {
@@ -64,8 +58,8 @@ function App() {
         const allDrivers = Array.isArray(users)
           ? users.filter((user) => user.isDriver)
           : [];
-        // const id = currentUser ? currentUser.id : null;
-        const id = users.find((user) => user.id === user.isActive.id)
+        const id = currentUser ? currentUser.id : null;
+        // const id = users.find((user) => user.id === user.isActive.id)
         console.log(users);
         setActiveUser(currentUser);
         setAllUsers(users);
@@ -128,6 +122,25 @@ function App() {
       });
   }
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+    axios
+      .post("https://digitekisi.onrender.com/api/auth/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("accessToken", response.data.accessToken); // store the access token in local storage
+        setLoggedIn(true)
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        setError("Invalid email or password");
+      });
+  };
+
   useEffect(() => {
     getUsers();
     getPassengerRides()
@@ -138,52 +151,68 @@ function App() {
     console.log({driverRides})
   }, []);
 
-  useEffect(() => {
-    if (activeUser && activeUser.recentLogin) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (activeUser && activeUser.recentLogin) {
+  //     setLoggedIn(true);
+  //   } else {
+  //     setLoggedIn(false);
+  //   }
+  // }, []);
+  console.log(loggedIn)
 
   return (
     <>
       {/* <Router> */}
-        <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/intro1" element={<WalkTroughPageOne />} />
-          <Route path="/intro2" element={<WalkTroughPageTwo />} />
-          <Route path="/intro3" element={<WalkTroughPageThree />} />
-          <Route path="/validate" element={<ValidationPage />} />
-          <Route path="/forgot" element={<ForgotPassword />} />
-          <Route path="/reset" element={<ResetPassword />} />
-          {/* <Route path="/rides" element={<PrivateRoutes loggedIn={loggedIn} />}> */}
-						<Route path="/rides" element={<Rides />} />
-					{/* </Route> */}
-          {/* <PrivateRoute
-            path="/rides"
-            element={<Rides />}
-            authenticated={loggedIn}
-          />
-          <PrivateRoute
-            path="/register"
-            element={<RegisterDriver />}
-            authenticated={loggedIn}
-          />
-          <PrivateRoute
-            path="/passenger/pay"
-            element={<MakePayment />}
-            authenticated={loggedIn}
-          />
-          <PrivateRoute
-            path="/driver"
-            element={<DriverProfile />}
-            authenticated={loggedIn}
-          /> */}
-        </Routes>
-        <Footer />
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              email={email}
+              password={password}
+              setEmail={setEmail}
+              setPassword={setPassword}
+              handleLogin={handleLogin}
+              error={error}
+              setError={setError}
+            />
+          }
+        />
+        <Route path="/intro1" element={<WalkTroughPageOne />} />
+        <Route path="/intro2" element={<WalkTroughPageTwo />} />
+        <Route path="/intro3" element={<WalkTroughPageThree />} />
+        <Route path="/validate" element={<ValidationPage />} />
+        <Route path="/forgot" element={<ForgotPassword />} />
+        <Route path="/reset" element={<ResetPassword />} />
+        {/* <Route path="/rides" element={<PrivateRoutes loggedIn={loggedIn} />}> */}
+        <Route path="/rides" element={<Rides />} />
+        {/* </Route> */}
+        {/* <Route path="/register" element={<PrivateRoutes loggedIn={loggedIn} />}> */}
+        <Route path="/register" element={<RegisterDriver />} />
+        {/* </Route> */}
+        {/* <Route
+          path="/passenger/pay"
+          element={<PrivateRoutes loggedIn={loggedIn} />}
+        > */}
+        <Route path="/passenger/pay" element={<MakePayment />} />
+        {/* </Route> */}
+        {/* <Route
+          path="/driver"
+          element={<PrivateRoutes loggedIn={loggedIn} />}
+        > */}
+        <Route
+          path="/driver"
+          element={<DriverProfile passengerId={passengerId} />}
+        />
+        {/* </Route> */}
+        <Route
+          path="/passenger"
+          element={<PassengerProfile />}
+        />
+      </Routes>
+      <Footer />
       {/* </Router> */}
     </>
   );

@@ -30,7 +30,7 @@ const Footer = () => {
             <p className="text-md text-white font-semibold">GPS</p>
           </div>
         </Link>
-        <Link to="/driver">
+        <Link to="/passenger">
           <div className="mx-2 flex flex-col items-start justify-start cursor-pointer">
             <RiAccountCircleFill />
             <p className="text-md text-white font-semibold">Account</p>

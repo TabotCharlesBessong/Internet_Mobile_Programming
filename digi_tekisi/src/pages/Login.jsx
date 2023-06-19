@@ -4,34 +4,34 @@ import { Link, useNavigate } from "react-router-dom";
 import Style from "./Welcome.module.css";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({handleLogin,email,password,setEmail,setPassword,error,setError}) => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("https://digitekisi.onrender.com/api/auth/login", {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        console.log(response);
-        localStorage.setItem("accessToken", response.data.accessToken); // store the access token in local storage
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        setError("Invalid email or password");
-      });
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   axios
+  //     .post("https://digitekisi.onrender.com/api/auth/login", {
+  //       email: email,
+  //       password: password,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //       localStorage.setItem("accessToken", response.data.accessToken); // store the access token in local storage
+  //       navigate("/");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setError("Invalid email or password");
+  //     });
+  // };
 
   return (
     <div
@@ -40,7 +40,7 @@ const Login = () => {
       <div className="flex flex-col w-[100%] items-center relative bg-[#00BFA5] h-screen justify-center p-8">
         <div className="w-full max-w-md">
           <form
-            onSubmit={handleSubmit}
+            onSubmit={handleLogin}
             className="bg-transparent flex flex-col justify-around px-8 pt-6 h-[20rem] pb-8 mb-4"
           >
             <h2 className="text-[28px] text-center font-normal capitalize text-[#ff9f00] mb-4">

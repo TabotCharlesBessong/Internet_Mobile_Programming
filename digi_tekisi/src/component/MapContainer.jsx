@@ -127,6 +127,7 @@ const MapContainer = () => {
         bootstrapURLKeys={{ key: import.meta.env.MAP_API_KEY }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
+        yesIWantToUseGoogleMapApiInternals={true}
         onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
       />
     </div>

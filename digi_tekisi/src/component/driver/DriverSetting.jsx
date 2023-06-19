@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const DriverSetting = () => {
+const DriverSetting = ({isDriver}) => {
   const [showPassword, setShowPassword] = useState(false);
   
   const {
@@ -99,9 +100,15 @@ const DriverSetting = () => {
           type="submit"
           className="px-6 py-2 bg-[#ff9f00] text-black rounded-md"
         >
-          Update Profile
+          update profile
         </button>
       </div>
+
+      {isDriver ? (
+        <p>View driver account</p>
+      ) : (
+        <Link to="/register">Become a driver</Link>
+      )}
     </form>
   );
 };
